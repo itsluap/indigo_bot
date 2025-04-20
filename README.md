@@ -33,22 +33,6 @@ A Discord bot for the Indigo RP FiveM server community.
    - Add `DISCORD_TOKEN` with your bot token
 6. The bot will automatically deploy and restart when you push changes to GitHub
 
-### Other Free Hosting Options
-
-1. **Oracle Cloud Free Tier**
-   - Offers always-free compute instances
-   - More complex setup but completely free
-   - No time limitations
-
-2. **Google Cloud Platform**
-   - Offers $300 free credit for 90 days
-   - Can be set up with GitHub Actions for auto-deployment
-
-3. **Replit**
-   - Free tier available
-   - Easy to use but may need periodic restarting
-   - Can be set up with UptimeRobot to keep it running
-
 ## Features
 
 ### Reminders
