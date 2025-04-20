@@ -4,6 +4,7 @@ import config
 import logging
 import sys
 import os
+import traceback
 
 # Set up logging
 logging.basicConfig(
@@ -36,6 +37,7 @@ async def on_ready():
         logger.info(f'Synced {len(synced)} slash commands')
     except Exception as e:
         logger.error(f'Failed to load reminders cog: {e}')
+        logger.error(traceback.format_exc())
 
 @bot.event
 async def on_member_join(member):
@@ -89,9 +91,21 @@ async def userinfo(ctx, member: discord.Member = None):
 def run_bot():
     """Run the bot"""
     try:
+        # Log environment check
+        logger.info("Starting bot...")
+        logger.info(f"Python version: {sys.version}")
+        logger.info(f"Discord.py version: {discord.__version__}")
+        logger.info(f"Current working directory: {os.getcwd()}")
+        logger.info(f"Files in current directory: {os.listdir('.')}")
+        
+        if not config.BOT_TOKEN:
+            logger.error("No bot token found in environment variables!")
+            sys.exit(1)
+            
         bot.run(config.BOT_TOKEN)
     except Exception as e:
         logger.error(f"Error running bot: {e}")
+        logger.error(traceback.format_exc())
         sys.exit(1)
 
 if __name__ == "__main__":
